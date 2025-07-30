@@ -6,6 +6,8 @@ import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
 import BlogPost from "../components/Blogs";
 import Reviews from "../components/Testimonials";
+import hero1 from "../assets/hero1.webp"
+import hero2 from "../assets/hero2.webp"
 
 const Home = () => {
   const aboutRef = useRef(null);
@@ -14,7 +16,8 @@ const Home = () => {
   const scrollTo = (ref) => ref.current.scrollIntoView({ behavior: 'smooth' });
 
   const heroImages = [
-    "https://images.pexels.com/photos/4832564/pexels-photo-4832564.jpeg",
+    hero1,
+    hero2,
     "https://innewsweekly.com/wp-content/uploads/2020/11/Sand-Suppliers.jpg",
     "https://images.pexels.com/photos/25559745/pexels-photo-25559745.jpeg"
   ];
@@ -48,44 +51,40 @@ const Home = () => {
 
   return (
     <div className="font-sans bg-beige text-dark">
-      {/* Hero Section */}
-      <section className="relative h-screen lg:h-[90vh] flex items-center">
-        <Swiper
-          modules={[Autoplay, EffectFade, Pagination]}
-          effect="fade"
-          autoplay={{ delay: 5000 }}
-          loop
-          className="absolute inset-0 w-full h-full z-0"
-        >
-          {heroImages.map((img, idx) => (
-            <SwiperSlide key={idx}>
-              <img
-                src={img}
-                alt={`slide-${idx}`}
-                className="w-full h-full object-cover"
-                style={{ minHeight: 300 }}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+      
+      <section className="relative h-screen w-full overflow-hidden">
+      {/* Background Swiper */}
+      <Swiper
+        modules={[Autoplay, EffectFade]}
+        effect="fade"
+        autoplay={{ delay: 5000 }}
+        loop
+        className="absolute inset-0 w-full h-full z-0"
+      >
+        {heroImages.map((img, idx) => (
+          <SwiperSlide key={idx}>
+            <img
+              src={img}
+              alt={`slide-${idx}`}
+              className="w-full h-full object-cover"
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-        <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none mx-5">
-          <div className="text-center px-6 max-w-2xl mx-auto pointer-events-auto bg-black/50 rounded-xl py-10">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white drop-shadow mb-6">
-              Kerala's Premium Sand Supplier
-            </h1>
-            <p className="text-lg md:text-2xl text-white/95 mb-8">
-              Trusted, government-approved sand for your construction and plastering needs. Fast delivery. Complete documentation.
-            </p>
-            <button
-              className="bg-primary hover:bg-primary-dark text-white font-heading font-semibold transition px-10 py-4 rounded-full text-lg shadow-lg"
-              onClick={() => scrollTo(aboutRef)}
-            >
-              Learn More
-            </button>
-          </div>
+      {/* Fullscreen Overlay */}
+      <div className="absolute inset-0 z-10 bg-black/40 flex items-center justify-center">
+        <div className="text-center px-6">
+          <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-display font-bold drop-shadow-lg">
+            Kerala&apos;s Premium Sand Supplier
+          </h1>
+          {/* Optional button — remove if not needed */}
+          <button className="mt-8 bg-primary hover:bg-primary-dark text-white font-heading font-semibold px-8 py-4 rounded-full text-lg shadow-lg transition">
+            Learn More
+          </button>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* About Section */}
       <section ref={aboutRef} className="py-20 bg-white">

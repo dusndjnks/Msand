@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
-import logo from '../assets/logo1.png';
+import logo from '../assets/logo2.png';
 
 const NAV_LINKS = [
   { name: "Home", to: "/" },
@@ -14,9 +14,8 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="w-full z-50 bg-white/95 backdrop-blur-xl shadow font-sans">
+    <nav className="w-full z-50 bg-white/30 backdrop-blur-md shadow font-sans fixed top-0 left-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Nav Row */}
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <NavLink to="/" className="flex items-center">
@@ -61,7 +60,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Dropdown (in flow, not absolute/fixed) */}
+        {/* Mobile Menu */}
         {menuOpen && (
           <div className="md:hidden mt-2">
             <div className="flex flex-col gap-2 py-3">
