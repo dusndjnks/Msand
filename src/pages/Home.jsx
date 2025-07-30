@@ -10,6 +10,7 @@ import hero1 from "../assets/hero1.webp"
 import hero2 from "../assets/hero2.webp"
 import hero3 from "../assets/hero3.webp"
 import hero4 from "../assets/hero4.webp"
+import { NavLink } from 'react-router-dom';
 
 const Home = () => {
   const aboutRef = useRef(null);
@@ -27,23 +28,43 @@ const Home = () => {
   const aboutImage = "https://floridaindependent.com/wp-content/uploads/2020/11/Sand-Suppliers.jpg";
 
   const whyChooseUsItems = [
-    {
-      title: "Government Approved",
-      description: "Our sand meets all government quality standards for construction use"
-    },
-    {
-      title: "Complete Documentation",
-      description: "Every delivery comes with geology pass and GST bill for your records"
-    },
-    {
-      title: "Wide Distribution",
-      description: "Serving five districts with reliable and timely deliveries"
-    },
-    {
-      title: "Quality Assurance",
-      description: "Consistent quality that passes all construction material tests"
-    }
-  ];
+  {
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+      </svg>
+    ),
+    title: "Certified Quality",
+    description: "Government-approved materials meeting all industry standards"
+  },
+  {
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    title: "On-Time Delivery",
+    description: "Guaranteed logistics with real-time tracking"
+  },
+  {
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    ),
+    title: "Full Documentation",
+    description: "Complete legal paperwork with every shipment"
+  },
+  {
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+      </svg>
+    ),
+    title: "Competitive Pricing",
+    description: "Best market rates with volume discounts"
+  }
+];
 
   const CheckIcon = () => (
     <svg className="w-5 h-5 text-primary mt-1 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -87,7 +108,7 @@ const Home = () => {
       {/* About Section */}
       <section ref={aboutRef} className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row gap-12 items-center">
+          <div className="flex flex-col-reverse md:flex-row gap-12 items-center">
             <div className="md:w-1/2">
               <img
                 src={aboutImage}
@@ -118,41 +139,42 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section ref={whyUsRef} className="py-20 bg-light">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl font-heading font-bold mb-4 text-primary">Why Choose Us?</h2>
-            <p className="max-w-2xl mx-auto text-lg">
-              What makes us the preferred choice for builders and developers.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-4 gap-8">
-            {whyChooseUsItems.map((item, idx) => (
-              <div
-                key={idx}
-                className="bg-white p-7 rounded-2xl flex flex-col items-center text-center shadow hover:shadow-lg border border-primary"
-              >
-                <svg
-                  className="mb-4 w-12 h-12 text-primary"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M8 12l2 2 4-4" />
-                </svg>
-                <h3 className="text-lg font-semibold mb-2 text-primary">{item.title}</h3>
-                <p className="text-sm text-dark">{item.description}</p>
+    <section className="bg-dark py-16 md:py-20 font-sans"> {/* Using dark: #2f2f2f */}
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16"> {/* Centered row alignment */}
+      {/* Left Column - Centered Content */}
+      <div className="md:w-5/12 text-center">
+        <h2 className="text-3xl md:text-4xl font-display text-light mb-6"> {/* Using light: #f9f4f0 */}
+          Why <span className="text-primary">Choose Our</span> Sand {/* Using accent: #f0c27b */}
+        </h2>
+        <p className="text-neutral mb-8"> {/* Using neutral: #eae2d6 */}
+          Trusted by construction firms and contractors across Kerala for premium quality and reliable service.
+        </p>
+        <NavLink to="/contact" className="bg-primary hover:bg-primary-dark text-light px-8 py-3 rounded-lg font-medium transition-colors shadow-md hover:shadow-lg"> {/* primary: #742731 */}
+          Request Quote
+        </NavLink>
+      </div>
+
+      {/* Right Column - Benefits */}
+      <div className="md:w-7/12 space-y-6">
+        {whyChooseUsItems.map((item, index) => (
+          <div key={index} className="flex items-start p-5 hover:bg-primary rounded-xl transition-colors border border-primary hover:border-accent/30">
+            <div className="bg-primary/10 p-2 rounded-lg mr-5">
+              <div className="text-accent">
+                {item.icon}
               </div>
-            ))}
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-light mb-1">{item.title}</h3>
+              <p className="text-neutral">{item.description}</p>
+            </div>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
 
       <BlogPost />
       <Reviews />

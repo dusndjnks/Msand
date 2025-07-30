@@ -6,52 +6,40 @@ import "swiper/css";
 const reviews = [
   {
     name: "Ajay Menon",
+    company: "Menon Constructions",
     location: "Trivandrum",
-    review:
-      "GoldenSands is our trusted partner for construction projects in Trivandrum. Consistent quality and timely delivery.",
+    review: "Golden Sands has been our exclusive sand supplier for 3 years. Their river sand quality is unmatched in South Kerala."
   },
   {
     name: "Deepa Raj",
+    company: "Raj Builders",
     location: "Kollam",
-    review:
-      "Their eco-friendly sand supply and quick logistics impressed us. Will definitely work with them again.",
+    review: "The only supplier that provides complete documentation with each delivery. Saved us countless compliance headaches."
   },
   {
     name: "Faisal K",
+    company: "Horizon Developments",
     location: "Pathanamthitta",
-    review:
-      "GoldenSands understands what a builder needs — reliability, quality, and communication.",
+    review: "When we had an urgent project deadline, Golden Sands arranged night deliveries to keep us on schedule."
   },
   {
     name: "Sreejith V",
+    company: "Varma Associates",
     location: "Kottayam",
-    review:
-      "Smooth service and responsive team. Highly recommend for anyone working on tight project deadlines.",
-  },
-  {
-    name: "Reshma B",
-    location: "Alappuzha",
-    review:
-      "Affordable rates and consistent quality make them our go-to sand supplier in the region.",
-  },
-  {
-    name: "Nishad S",
-    location: "Idukki",
-    review:
-      "Working with GoldenSands was seamless — from placing the order to final delivery.",
-  },
+    review: "Compared to 5 other suppliers, Golden Sands offered the best combination of price and quality for our township project."
+  }
 ];
 
 const Testimonials = () => {
   return (
-    <section className="py-20 bg-light font-sans">
-      <div className="max-w-7xl mx-auto px-6 md:px-24">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl font-heading font-bold mb-4 text-primary">
-            What Our Clients Say
+    <section className="py-16 bg-light font-sans">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-display font-bold text-primary-dark mb-4">
+            What Builders Say About Us
           </h2>
-          <p className="max-w-2xl mx-auto text-lg text-dark">
-            Builders and developers across South Kerala trust us for quality and service.
+          <p className="text-dark/80 max-w-2xl mx-auto">
+            Trusted by construction firms across Kerala for quality and reliability
           </p>
         </div>
 
@@ -59,27 +47,34 @@ const Testimonials = () => {
           modules={[Autoplay]}
           spaceBetween={32}
           autoplay={{
-            delay: 3500,
+            delay: 5000,
             disableOnInteraction: false,
           }}
           breakpoints={{
             0: { slidesPerView: 1 },
-            1024: { slidesPerView: 2 },
+            768: { slidesPerView: 1.2 },
+            1024: { slidesPerView: 2 }
           }}
           loop={true}
-          className="pb-10"
         >
           {reviews.map((item, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-white p-6 md:p-8 rounded-2xl flex flex-col gap-4 text-left shadow hover:shadow-lg border border-primary transition max-w-2xl mx-auto h-full">
-                <p className="text-dark text-base italic leading-relaxed">
-                  "{item.review}"
+              <div className="bg-white p-8 rounded-lg shadow-sm border border-neutral/20 hover:shadow-md transition-all h-full">
+                <svg 
+                  className="w-8 h-8 text-primary mb-4 opacity-70" 
+                  fill="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+                <p className="text-dark text-lg mb-6">
+                  {item.review}
                 </p>
-                <div className="pt-2">
-                  <h3 className="text-lg font-semibold text-primary font-heading">
+                <div>
+                  <h3 className="font-heading font-semibold text-primary-dark">
                     {item.name}
                   </h3>
-                  <p className="text-dark text-sm">{item.location}</p>
+                  <p className="text-dark/70 text-sm">{item.company}, {item.location}</p>
                 </div>
               </div>
             </SwiperSlide>
