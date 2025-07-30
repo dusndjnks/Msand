@@ -9,6 +9,7 @@ import Reviews from "../components/Testimonials";
 import hero1 from "../assets/hero1.webp"
 import hero2 from "../assets/hero2.webp"
 import hero3 from "../assets/hero3.webp"
+import hero4 from "../assets/hero4.webp"
 
 const Home = () => {
   const aboutRef = useRef(null);
@@ -19,6 +20,7 @@ const Home = () => {
   const heroImages = [
     hero1,
     hero2,
+    hero4,
     hero3,
   ];
 
@@ -52,7 +54,7 @@ const Home = () => {
   return (
     <div className="font-sans bg-beige text-dark">
       
-      <section className="relative h-screen w-full overflow-hidden">
+      <section className="relative h-[90vh] md:h-screen w-full overflow-hidden">
       {/* Background Swiper */}
       <Swiper
         modules={[Autoplay, EffectFade]}
@@ -78,10 +80,6 @@ const Home = () => {
           <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-display font-bold drop-shadow-lg">
             Kerala&apos;s Premium Sand Supplier
           </h1>
-          {/* Optional button — remove if not needed */}
-          <button className="mt-8 bg-primary hover:bg-primary-dark text-white font-heading font-semibold px-8 py-4 rounded-full text-lg shadow-lg transition">
-            Learn More
-          </button>
         </div>
       </div>
     </section>
