@@ -8,6 +8,7 @@ import BlogPost from "../components/Blogs";
 import Reviews from "../components/Testimonials";
 import hero1 from "../assets/hero1.webp"
 import hero2 from "../assets/hero2.webp"
+import hero3 from "../assets/hero3.webp"
 
 const Home = () => {
   const aboutRef = useRef(null);
@@ -18,8 +19,7 @@ const Home = () => {
   const heroImages = [
     hero1,
     hero2,
-    "https://innewsweekly.com/wp-content/uploads/2020/11/Sand-Suppliers.jpg",
-    "https://images.pexels.com/photos/25559745/pexels-photo-25559745.jpeg"
+    hero3,
   ];
 
   const aboutImage = "https://floridaindependent.com/wp-content/uploads/2020/11/Sand-Suppliers.jpg";

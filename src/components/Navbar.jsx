@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import logo from '../assets/logo2.png';
 
 const NAV_LINKS = [
@@ -14,7 +14,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="w-full z-50 bg-white/30 backdrop-blur-md shadow font-sans fixed top-0 left-0">
+    <nav className="w-full z-50 bg-white/50 backdrop-blur-md shadow font-sans fixed top-0 left-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -46,17 +46,13 @@ const Navbar = () => {
             </NavLink>
           </div>
 
-          {/* Mobile Toggle */}
+          {/* Mobile Toggle Button */}
           <button
-            onClick={() => setMenuOpen((prev) => !prev)}
-            className="md:hidden flex items-center justify-center p-2 rounded-full text-primary focus:outline-none"
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden flex items-center justify-center p-2 rounded-md text-primary focus:outline-none"
             aria-label="Toggle menu"
-            type="button"
           >
-            <ChevronDown
-              size={28}
-              className={`transition-transform duration-300 ${menuOpen ? "rotate-180" : ""}`}
-            />
+            {menuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
 
