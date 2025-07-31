@@ -18,8 +18,8 @@ const Footer = () => {
           <h4 className="font-semibold mb-3">Quick Links</h4>
           <ul className="space-y-2">
             <li><NavLink to="/about" className="text-gray-400 hover:text-white">About</NavLink></li>
+            <li><NavLink to="/blog" className="text-gray-400 hover:text-white">Blog</NavLink></li>
             <li><NavLink to="/products" className="text-gray-400 hover:text-white">Products</NavLink></li>
-            <li><NavLink to="/why-us" className="text-gray-400 hover:text-white">Why Us</NavLink></li>
             <li><NavLink to="/contact" className="text-gray-400 hover:text-white">Contact</NavLink></li>
           </ul>
         </div>
@@ -30,15 +30,14 @@ const Footer = () => {
           <address className="not-italic text-gray-400 space-y-1">
             <p>
               <a 
-                href="https://www.google.com/maps/place/123+Industrial+Area" 
+                href="https://maps.app.goo.gl/y6pVimQEaG7Gs9gr8" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="hover:text-white"
               >
-                123 Industrial Area, Zone 4
+                JWPQ+R9C, Vembayam/ <br /> Kilimanoor, Vembayam
               </a>
             </p>
-            <p>Cityname, State 560001</p>
             <p>
               <a href="tel:7837888666" className="hover:text-white">Phone: 7837 888 666</a>
             </p>

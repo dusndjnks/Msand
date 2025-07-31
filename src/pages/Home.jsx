@@ -75,7 +75,7 @@ const Home = () => {
   return (
     <div className="font-sans bg-beige text-dark">
       
-      <section className="relative h-[90vh] md:h-screen w-full overflow-hidden">
+      <section className="relative h-[85vh] md:h-screen w-full overflow-hidden">
       {/* Background Swiper */}
       <Swiper
         modules={[Autoplay, EffectFade]}
