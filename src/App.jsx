@@ -3,9 +3,10 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import About from "./pages/About";
-import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import { FaWhatsapp } from "react-icons/fa";
+import AboutUs from "./pages/About";
+import BlogPage from "./pages/Blog";
 
 function App() {
   return (
@@ -13,10 +14,10 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/about" element={<AboutUs/>} />
+        <Route path="/blog" element={<BlogPage/>} />
+        <Route path="/contact" element={<Contact/>} />
       </Routes>
 
       <Footer />

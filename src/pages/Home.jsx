@@ -21,7 +21,7 @@ const Home = () => {
 
   const scrollTo = (ref) => ref.current.scrollIntoView({ behavior: 'smooth' });
 
-  const heroImages = [hero1, hero2, hero4, hero3];
+  const heroImages = [hero1, hero2, hero3];
   const aboutImage = "https://floridaindependent.com/wp-content/uploads/2020/11/Sand-Suppliers.jpg";
 
   const whyChooseUsItems = [
@@ -98,19 +98,15 @@ const Home = () => {
             <div className="md:w-5/12 text-center">
               <h2 className="text-3xl md:text-4xl font-display text-light mb-6">Why <span className="text-primary">Choose Our</span> Sand</h2>
               <p className="text-neutral mb-8">Trusted by construction firms and contractors across Kerala for premium quality and reliable service.</p>
-              <div className="relative">
-                <button onClick={() => setShowForm(true)} className="bg-primary hover:bg-primary-dark text-light px-8 py-3 rounded-lg font-medium transition-colors shadow-md hover:shadow-lg">
-                  Request Quote
-                </button>
-                {showForm && (
-                  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-                    <div className="bg-white rounded-xl shadow-xl p-6 max-w-2xl w-full relative">
-                      <button onClick={() => setShowForm(false)} className="absolute top-3 right-3 text-xl font-bold text-gray-600 hover:text-gray-900">&times;</button>
-                      <ContactForm />
-                    </div>
-                  </div>
-                )}
-              </div>
+              <>
+      {showForm && <ContactForm />}
+      <button
+        onClick={() => setShowForm(true)}
+        className="bg-primary hover:bg-primary-dark text-light px-8 py-3 rounded-lg font-medium transition-colors shadow-md hover:shadow-lg"
+      >
+        Request Quote
+      </button>
+    </>
             </div>
 
             <div className="md:w-7/12 space-y-6">

@@ -5,13 +5,13 @@ const blogPosts = [
   {
     title: "Choosing the Right Sand for Your Construction",
     excerpt: "Learn how different sand types affect concrete strength and plastering quality .",
-    img: "https://knippleaggregates.com/wp-content/uploads/2020/09/concrete-sand-supplier.jpg",
+    img: "https://acceptbusiness.net/wp-content/uploads/2020/02/Concrete-Sand-White-1170x500.jpg",
     date: "May 15, 2023",
   },
   {
     title: "Sustainable Sand Mining Practices",
     excerpt: "How we're implementing eco-friendly sourcing while maintaining quality standards.",
-    img: "https://acceptbusiness.net/wp-content/uploads/2020/02/Concrete-Sand-White-1170x500.jpg",
+    img: "https://knippleaggregates.com/wp-content/uploads/2020/09/concrete-sand-supplier.jpg",
     date: "April 28, 2023",
   },
 ];
