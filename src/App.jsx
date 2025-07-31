@@ -7,10 +7,12 @@ import Contact from "./pages/Contact";
 import { FaWhatsapp } from "react-icons/fa";
 import AboutUs from "./pages/About";
 import BlogPage from "./pages/Blog";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <div className="App relative">
+      <ScrollToTop/>
       <Navbar />
 
       <Routes>
