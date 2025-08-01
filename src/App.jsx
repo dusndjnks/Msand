@@ -8,6 +8,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import AboutUs from "./pages/About";
 import BlogPage from "./pages/Blog";
 import ScrollToTop from "./components/ScrollToTop";
+import Product from "./pages/Product";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<AboutUs/>} />
         <Route path="/blog" element={<BlogPage/>} />
+        <Route path="/products" element={<Product/>} />
         <Route path="/contact" element={<Contact/>} />
       </Routes>
 

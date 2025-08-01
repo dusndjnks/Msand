@@ -6,7 +6,8 @@ import logo from '../assets/logo2.png';
 const NAV_LINKS = [
   { name: "Home", to: "/" },
   { name: "About", to: "/about" },
-  { name: "Blog", to: "/blog" },
+  { name: "Blogs", to: "/blog" },
+  { name: "Products", to: "/products" },
   { name: "Contact", to: "/contact" },
 ];
 
@@ -24,7 +25,7 @@ const Navbar = () => {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8 text-[17px] font-medium">
-            {NAV_LINKS.slice(0, 3).map((link) => (
+            {NAV_LINKS.slice(0, 4).map((link) => (
               <NavLink
                 key={link.name}
                 to={link.to}
