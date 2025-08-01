@@ -1,21 +1,20 @@
 import React from "react";
 import img1 from "../assets/about1.jpg";
 import img2 from "../assets/about2.jpg";
-import img3 from "../assets/about.jpg";
-import img4 from "../assets/about4.jpg";
 import img5 from "../assets/about5.jpeg";
-import { CheckCircle } from "lucide-react";
+import img4 from "../assets/about4.jpg";
+import sandsupplier from "../assets/sandsupplier.mp4";
 
 const AboutUs = () => {
   return (
     <main className="bg-light text-text-base font-sans">
       {/* Spacer for fixed navbar */}
-      <div className="h-20"></div>
+      <div className="h-20" />
 
       {/* Hero Section */}
       <section className="relative h-[65vh] overflow-hidden">
         <video
-          src="https://videos.pexels.com/video-files/4474927/4474927-uhd_2560_1440_30fps.mp4"
+          src={sandsupplier}
           autoPlay
           muted
           loop
@@ -34,20 +33,16 @@ const AboutUs = () => {
           Who We Are
         </h2>
         <p className="text-lg md:text-xl leading-relaxed text-text-light mb-4">
-          We are South Kerala's trusted supplier of quality river and M-Sand for residential,
-          commercial, and infrastructure projects. With years of experience and a dedicated team,
-          we ensure prompt deliveries, quality material, and transparent pricing.
+          We are South Kerala's trusted supplier of quality River Sand and M-Sand for residential, commercial, and infrastructure projects. Backed by years of experience and a reliable team, we ensure timely delivery, verified quality, and transparent pricing.
         </p>
         <p className="text-lg md:text-xl leading-relaxed text-text-light">
-          Our goal is simple: to support your projects with consistent, affordable,
-          and professional service. From small home constructions to large-scale
-          developments, we have the resources and logistics to get the job done.
+          Whether you're building a dream home or managing large-scale infrastructure, we have the logistics, manpower, and material to support your goals with precision and efficiency.
         </p>
       </section>
 
       {/* Image Gallery */}
-      <section className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 sm:grid-cols-2 gap-6 pb-20">
-        {[img1, img2].map((img, idx) => (
+      <section className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
+        {[img1, img2, img4].map((img, idx) => (
           <img
             key={idx}
             src={img}
@@ -62,19 +57,17 @@ const AboutUs = () => {
         className="relative bg-cover bg-center bg-no-repeat text-white py-20 px-4 md:px-6"
         style={{ backgroundImage: `url(${img5})` }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-
+        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         <div className="relative z-10 max-w-5xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-heading text-accent mb-8">
             What We Do
           </h2>
-
           <ul className="space-y-4 text-lg md:text-xl font-medium text-light">
-            <li>✔️ Supply high-quality River Sand and M-Sand</li>
-            <li>✔️ On-site delivery with our own truck fleet</li>
-            <li>✔️ Material sourcing from authorized riverbeds and quarries</li>
-            <li>✔️ Support for residential, commercial & infrastructure projects</li>
-            <li>✔️ Reliable service across all South Kerala districts</li>
+            <li>✔️ Supply premium River Sand, M-Sand & Rockdust</li>
+            <li>✔️ On-site delivery using our owned truck fleet</li>
+            <li>✔️ Ethical sourcing from certified quarries & riverbeds</li>
+            <li>✔️ Full-scale support for housing to highway projects</li>
+            <li>✔️ Consistent operations across all South Kerala districts</li>
           </ul>
         </div>
       </section>
@@ -85,14 +78,10 @@ const AboutUs = () => {
           Our Commitment
         </h2>
         <p className="text-lg md:text-xl leading-relaxed text-text-light mb-4">
-          Every project deserves dependable materials. We commit to supplying sand
-          that meets safety and structural standards—sourced from authorized depots,
-          loaded responsibly, and transported using our fleet of maintained trucks.
+          We believe every construction deserves consistent, certified material. That’s why we source only from authorized depots and quarries—ensuring proper loading, safe transportation, and strict quality checks at every stage.
         </p>
         <p className="text-lg md:text-xl leading-relaxed text-text-light">
-          Our team prioritizes clear communication, on-site delivery coordination,
-          and long-term customer satisfaction. Partner with us to experience the difference
-          of working with a professional sand supplier.
+          Our logistics team works hand-in-hand with customers to meet timelines, reduce material waste, and support long-term success.
         </p>
       </section>
 
@@ -104,26 +93,26 @@ const AboutUs = () => {
               Serving <span className="text-[#742731]">All South Kerala</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We deliver to all major districts with our dedicated logistics network
+              From urban centers to rural sites — our trucks reach you.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
+            {/* Coverage List */}
             <div className="bg-white md:p-8 px-3 py-5 rounded-xl shadow-md h-full flex flex-col">
               <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-6 text-center">
                 Our Coverage Area
               </h3>
               <ul className="grid grid-cols-2 sm:gap-x-4 gap-y-4 flex-grow">
                 {[
-                  'Trivandrum',
-                  'Kollam',
-                  'Pathanamthitta',
-                  'Alappuzha',
-                  'Kottayam',
-                  'Idukki',
+                  "Trivandrum",
+                  "Kollam",
+                  "Pathanamthitta",
+                  "Alappuzha",
+                  "Kottayam",
                 ].map((district, i) => (
-                  <li 
-                    key={i} 
+                  <li
+                    key={i}
                     className="flex items-center space-x-2 text-base lg:text-lg px-2 py-1 rounded hover:bg-[#742731]/5 transition-colors"
                   >
                     <svg
@@ -150,10 +139,12 @@ const AboutUs = () => {
                 ))}
               </ul>
             </div>
+
+            {/* CTA Box */}
             <div className="bg-[#742731] text-white p-8 rounded-xl shadow-md h-full">
               <h3 className="text-2xl font-bold mb-6">Ready to Order?</h3>
               <p className="text-gray-200 mb-8">
-                Get a free quote today. Our team will contact you within 30 minutes to discuss your project requirements.
+                Get a free quote today. We'll reach out within 30 minutes to finalize your delivery.
               </p>
               <div className="space-y-4">
                 <a
@@ -161,7 +152,12 @@ const AboutUs = () => {
                   className="inline-flex items-center justify-center w-full bg-white hover:bg-gray-100 text-[#742731] font-bold px-6 py-4 rounded-lg transition duration-300"
                 >
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
                   </svg>
                   CALL NOW: 78378 88666
                 </a>
@@ -172,7 +168,12 @@ const AboutUs = () => {
                   className="inline-flex items-center justify-center w-full bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-4 rounded-lg transition duration-300"
                 >
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                    />
                   </svg>
                   WHATSAPP ENQUIRY
                 </a>
