@@ -76,7 +76,7 @@ const BlogPage = () => {
           className="text-center mb-16"
         >
           <h1 className="text-3xl md:text-4xl font-bold text-[#742731] mb-3">
-            Sand King Insights
+            Golden Sands Insights
           </h1>
           <div className="w-20 h-1.5 bg-[#742731] mx-auto mb-4"></div>
           <p className="text-lg text-gray-700 max-w-2xl mx-auto">

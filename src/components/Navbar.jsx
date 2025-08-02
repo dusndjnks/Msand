@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
 import logo from '../assets/logo2.png';
 
 const NAV_LINKS = [
@@ -8,7 +9,6 @@ const NAV_LINKS = [
   { name: "About", to: "/about" },
   { name: "Blogs", to: "/blog" },
   { name: "Products", to: "/products" },
-  { name: "Contact", to: "/contact" },
 ];
 
 const Navbar = () => {
@@ -25,13 +25,13 @@ const Navbar = () => {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8 text-[17px] font-medium">
-            {NAV_LINKS.slice(0, 4).map((link) => (
+            {NAV_LINKS.map((link) => (
               <NavLink
                 key={link.name}
                 to={link.to}
                 className={({ isActive }) =>
-                  `transition-colors duration-200 ${
-                    isActive ? 'text-primary' : 'text-gray-800 hover:text-primary'
+                  `transition-all duration-200 transform hover:scale-105 ${
+                    isActive ? 'text-primary font-semibold' : 'text-gray-800 hover:text-primary'
                   }`
                 }
                 end={link.to === "/"}
@@ -41,7 +41,7 @@ const Navbar = () => {
             ))}
             <NavLink
               to="/contact"
-              className="bg-primary text-white rounded-full px-6 py-2 shadow-md hover:bg-primary-dark transition-all duration-300 font-semibold"
+              className="bg-primary text-white rounded-full px-6 py-2 shadow-md hover:bg-primary-dark transition-all duration-300 transform hover:scale-105 font-semibold"
             >
               Contact
             </NavLink>
@@ -57,37 +57,48 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        {menuOpen && (
-          <div className="md:hidden mt-2">
-            <div className="flex flex-col gap-2 py-3">
-              {NAV_LINKS.slice(0, 3).map((link) => (
+        {/* Mobile Menu with Framer Motion */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              key="mobile-menu"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden overflow-hidden"
+            >
+              <div className="flex flex-col gap-2 py-3">
+                {NAV_LINKS.map((link) => (
+                  <NavLink
+                    key={link.name}
+                    to={link.to}
+                    onClick={() => setMenuOpen(false)}
+                    className={({ isActive }) =>
+                      `block text-[15px] py-2 px-3 rounded-md transition-all transform hover:scale-105 duration-200 ${
+                        isActive
+                          ? 'text-primary font-semibold'
+                          : 'text-gray-900 hover:text-primary hover:font-semibold'
+                      }`
+                    }
+                    end={link.to === "/"}
+                  >
+                    {link.name}
+                  </NavLink>
+                ))}
+
+                {/* Contact Button in Mobile */}
                 <NavLink
-                  key={link.name}
-                  to={link.to}
+                  to="/contact"
                   onClick={() => setMenuOpen(false)}
-                  className={({ isActive }) =>
-                    `block text-[15px] py-2 px-3 rounded-md transition-all duration-200 ${
-                      isActive
-                        ? 'text-primary font-semibold'
-                        : 'text-gray-900 hover:text-primary'
-                    }`
-                  }
-                  end={link.to === "/"}
+                  className="block text-[15px] py-2 px-4 mt-1 bg-primary text-white rounded-full font-semibold text-center transition-transform transform hover:scale-105 duration-200"
                 >
-                  {link.name}
+                  Contact
                 </NavLink>
-              ))}
-              <NavLink
-                to="/contact"
-                onClick={() => setMenuOpen(false)}
-                className="bg-primary text-white text-center rounded-full px-5 py-2 shadow-md hover:bg-primary-dark transition-all duration-300 font-medium text-[15px]"
-              >
-                Contact
-              </NavLink>
-            </div>
-          </div>
-        )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );
