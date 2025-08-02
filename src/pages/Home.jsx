@@ -86,7 +86,7 @@ const Home = () => {
       </Helmet>
 
       {/* Hero */}
-      <section className="relative h-[85vh] md:h-screen w-full overflow-hidden">
+      <section className="relative h-[80vh] md:h-screen w-full overflow-hidden">
         <Swiper modules={[Autoplay, EffectFade]} effect="fade" autoplay={{ delay: 5000 }} loop className="absolute inset-0 w-full h-full z-0">
           {heroImages.map((img, idx) => (
             <SwiperSlide key={idx}>
