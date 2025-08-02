@@ -6,9 +6,7 @@ import 'swiper/css/effect-fade';
 import BlogPost from "../components/Blogs";
 import Reviews from "../components/Testimonials";
 import hero1 from "../assets/hero1.webp";
-import hero6 from "../assets/ChatGPT Image Aug 3, 2025, 02_57_44 AM.png"
-import hero7 from "../assets/ChatGPT Image Aug 3, 2025, 02_59_36 AM.png"
-import hero8 from "../assets/ChatGPT Image Aug 3, 2025, 03_00_44 AM.png"
+import hero6 from "../assets/hero5.webp"
 import hero2 from "../assets/hero2.webp";
 import hero3 from "../assets/hero3.webp";
 import riversand from "../assets/riversand.webp";
@@ -18,13 +16,12 @@ import rockdust from "../assets/rockdust.webp";
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import ContactForm from "../components/ContactForm";
-import { ArrowRight } from 'lucide-react';
 
 const Home = () => {
   const aboutRef = useRef(null);
   const [showForm, setShowForm] = useState(false);
 
-  const heroImages = [hero6 , hero7 , hero8 , hero1, hero2, hero3];
+  const heroImages = [hero6 , hero2, hero1 , hero3];
   const aboutImage = "https://floridaindependent.com/wp-content/uploads/2020/11/Sand-Suppliers.jpg";
 
   const whyChooseUsItems = [
