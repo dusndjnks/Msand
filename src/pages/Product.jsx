@@ -17,6 +17,12 @@ import row3 from "../assets/row3.webp"
 import row2 from "../assets/row2.webp"
 import row1 from "../assets/row1.webp"
 
+import sands1 from "../assets/goldensands (1).webp"
+import sands2 from "../assets/goldensands (2).webp"
+import sands3 from "../assets/goldensands (3).webp"
+import sands4 from "../assets/goldensands (4).webp"
+import sands5 from "../assets/goldensands (5).webp"
+
 const products = [
   {
     title: 'River Sand',
@@ -151,8 +157,6 @@ const Product = () => {
     ))}
   </div>
 </section>
-
-
 
     {/* CTA Section */}
 <section className="py-16 px-4 bg-[#742731] text-white text-center">

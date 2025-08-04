@@ -17,6 +17,13 @@ import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import ContactForm from "../components/ContactForm";
 
+import sands1 from "../assets/goldensands (1).webp"
+import sands2 from "../assets/goldensands (2).webp"
+import sands3 from "../assets/goldensands (3).webp"
+import sands4 from "../assets/goldensands (4).webp"
+import sands5 from "../assets/goldensands (5).webp"
+import sands6 from "../assets/goldensands (5).png"
+
 const Home = () => {
   const aboutRef = useRef(null);
   const [showForm, setShowForm] = useState(false);
@@ -121,7 +128,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-8"> {/* Increased padding */}
           <div className="flex flex-col-reverse md:flex-row gap-12 items-center">
             <div className="md:w-1/2">
-              <img src={aboutImage} alt="About our company" className="rounded-xl shadow-xl w-full h-auto object-cover" />
+              <img src={sands6} alt="About our company" className="rounded-xl shadow-xl w-full h-auto object-cover" />
             </div>
             <div className="md:w-1/2">
               <h2 className="text-3xl font-display font-bold text-primary mb-6">About Our Company</h2>
