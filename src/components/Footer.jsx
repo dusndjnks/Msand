@@ -39,8 +39,10 @@ const Footer = () => {
                 JWPQ+R9C, Vembayam / Kilimanoor, Vembayam
               </a>
             </p>
-            <p>
+            <p className='flex flex-col'>
               <a href="tel:7837888666" className="hover:text-white">Phone: 7837 888 666</a>
+              <a href="tel:9447745440" className="hover:text-white">Phone: 9447 745 440</a>
+              <a href="tel:7307888666" className="hover:text-white">Phone: 9447 745 440</a>
             </p>
             <p>
               <a href="mailto:info@goldensands.com" className="hover:text-white">info@goldensands.com</a>

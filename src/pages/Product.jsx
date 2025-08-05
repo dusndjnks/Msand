@@ -141,7 +141,7 @@ const Product = () => {
       { title: "Purity", value: "100%", image: row1 },
       { title: "Govt. Approved", value: "GST Invoice", image: row2 },
       { title: "Silt Content", value: "< 3%", image: row3 },
-      { title: "Delivery", value: "On-Time", image: row4 },
+      { title: "Delivery", value: "On-Time", image: sands1 },
     ].map((item, index) => (
       <div key={index} className="relative w-full h-[280px]">
         <img

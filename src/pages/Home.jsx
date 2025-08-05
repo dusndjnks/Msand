@@ -30,7 +30,7 @@ const Home = () => {
   const aboutRef = useRef(null);
   const [showForm, setShowForm] = useState(false);
 
-  const heroImages = [hero6 , hero2, hero1 , hero3];
+  const heroImages = [ hero6 , sands2 , hero1 , hero3];
   const aboutImage = "https://floridaindependent.com/wp-content/uploads/2020/11/Sand-Suppliers.jpg";
 
   const whyChooseUsItems = [

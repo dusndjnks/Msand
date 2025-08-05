@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { toast, Toaster } from "react-hot-toast";
 
 const ContactForm = () => {
   const [form, setForm] = useState({
@@ -10,7 +11,6 @@ const ContactForm = () => {
     message: "",
   });
 
-  const [submitted, setSubmitted] = useState(false);
   const [show, setShow] = useState(true);
   const formRef = useRef(null);
 
@@ -21,14 +21,26 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const scriptURL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbwWSybaEuvpwpGLEvbNmXi8d4MLupSGJk-uJ3pwIUHWLo6gudAjOUIKE0Dy4_SB7730CA/exec";
+
       const formData = new FormData();
-      for (const key in form) {
-        formData.append(key, form[key]);
+      Object.entries(form).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+
+      const response = await fetch(scriptURL, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
-      const response = await fetch(scriptURL, { method: "POST", body: formData });
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      setSubmitted(true);
+
+      toast.success("Form submitted successfully!");
+
+      // Clear form
       setForm({
         name: "",
         email: "",
@@ -37,9 +49,12 @@ const ContactForm = () => {
         place: "",
         message: "",
       });
+
+      // Close modal after 2 seconds
+      setTimeout(() => setShow(false), 2000);
     } catch (error) {
-      alert("Submission failed. Please check your network and try again.");
-      console.error("Error!", error.message);
+      console.error("Submission error:", error.message);
+      toast.error("Submission failed. Please try again.");
     }
   };
 
@@ -57,11 +72,11 @@ const ContactForm = () => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center px-4 py-10">
+      <Toaster position="top-right" />
       <div
         ref={formRef}
         className="bg-white rounded-lg shadow-xl w-full max-w-xl relative p-6 font-sans"
       >
-        {/* Close Button */}
         <button
           onClick={() => setShow(false)}
           className="absolute top-3 right-4 text-gray-500 hover:text-black text-2xl font-bold"
@@ -74,12 +89,6 @@ const ContactForm = () => {
         <h2 className="text-xl font-semibold text-center text-primary mb-4">
           Contact Us
         </h2>
-
-        {submitted && (
-          <p className="text-green-600 text-center font-medium mb-4">
-            Thank you! We'll get back to you shortly.
-          </p>
-        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
