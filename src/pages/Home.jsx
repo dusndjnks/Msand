@@ -1,10 +1,16 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
+import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet';
+
 import BlogPost from "../components/Blogs";
 import Reviews from "../components/Testimonials";
+import ContactForm from "../components/ContactForm";
+import ServicesSection from '../components/ServicesSection';
+
 import hero1 from "../assets/hero1.webp";
 import hero6 from "../assets/hero5.webp"
 import hero2 from "../assets/hero2.webp";
@@ -13,10 +19,6 @@ import riversand from "../assets/riversand.webp";
 import msand from "../assets/m-sand.webp";
 import psand from "../assets/p-sand.webp"
 import rockdust from "../assets/rockdust.webp";
-import { motion } from 'framer-motion';
-import { Helmet } from 'react-helmet';
-import ContactForm from "../components/ContactForm";
-
 import sands1 from "../assets/goldensands (1).webp"
 import sands2 from "../assets/goldensands (2).webp"
 import sands3 from "../assets/goldensands (3).webp"
@@ -142,6 +144,8 @@ const Home = () => {
           </div>
         </div>
       </motion.section>
+
+      <ServicesSection/>
 
      {/* Featured Products – Refined */}
 <motion.section
