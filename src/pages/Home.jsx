@@ -9,6 +9,7 @@ import { Helmet } from 'react-helmet';
 import BlogPost from "../components/Blogs";
 import Reviews from "../components/Testimonials";
 import ContactForm from "../components/ContactForm";
+import WhyChooseUs from '../components/WhyChooseUs';
 import ServicesSection from '../components/ServicesSection';
 
 import hero1 from "../assets/hero1.webp";
@@ -211,54 +212,8 @@ const Home = () => {
     </div>
   </div>
 </motion.section>
-
-
-
-      {/* Why Choose Us */}
-      <motion.section
-        className="bg-dark py-20 font-sans"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        <div className="max-w-6xl mx-auto px-8"> {/* Increased padding */}
-          <div className="flex flex-col md:flex-row items-center gap-10">
-            <div className="md:w-5/12 text-center">
-              <h2 className="text-3xl md:text-4xl font-display text-light mb-6">Why <span className="text-primary">Choose Our</span> Sand</h2>
-              <p className="text-neutral mb-8">Trusted by construction firms and contractors across Kerala for premium quality and reliable service.</p>
-              <>
-                {showForm && <ContactForm />}
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  onClick={() => setShowForm(true)}
-                  className="bg-primary hover:bg-primary-dark text-light px-8 py-3 rounded-lg font-medium transition-colors shadow-md hover:shadow-lg"
-                >
-                  Request Quote
-                </motion.button>
-              </>
-            </div>
-
-            <div className="md:w-7/12 space-y-6">
-              {whyChooseUsItems.map((item, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ scale: 1.03, y: -4 }}
-                  className="flex items-start p-5 bg-dark hover:bg-primary rounded-xl transition-colors border border-primary hover:border-accent/30 shadow-md"
-                >
-                  <div className="bg-primary/10 p-2 rounded-lg mr-5">
-                    <div className="text-accent">{item.icon}</div>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-light mb-1">{item.title}</h3>
-                    <p className="text-neutral">{item.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </motion.section>
+      
+      <WhyChooseUs/>
 
       <BlogPost />
       <Reviews />
