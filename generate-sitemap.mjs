@@ -1,7 +1,6 @@
 import { SitemapStream, streamToPromise } from 'sitemap';
 import { createWriteStream } from 'fs';
 
-// Define your site’s pages here
 const links = [
   { url: '/', changefreq: 'weekly', priority: 1.0 },
   { url: '/about', changefreq: 'weekly', priority: 0.8 },
