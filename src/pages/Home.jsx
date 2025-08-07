@@ -12,20 +12,25 @@ import ContactForm from "../components/ContactForm";
 import ServicesSection from '../components/ServicesSection';
 
 import hero1 from "../assets/hero1.webp";
-import hero6 from "../assets/hero5.webp";
+import hero6 from "../assets/hero5.webp"
 import hero2 from "../assets/hero2.webp";
 import hero3 from "../assets/hero3.webp";
 import riversand from "../assets/riversand.webp";
 import msand from "../assets/m-sand.webp";
-import psand from "../assets/p-sand.webp";
+import psand from "../assets/p-sand.webp"
 import rockdust from "../assets/rockdust.webp";
-import sands6 from "../assets/goldensands (5).webp";
+import sands1 from "../assets/goldensands (1).webp"
+import sands2 from "../assets/goldensands (2).webp"
+import sands3 from "../assets/goldensands (3).webp"
+import sands4 from "../assets/goldensands (4).webp"
+import sands6 from "../assets/goldensands (5).webp"
 
 const Home = () => {
   const aboutRef = useRef(null);
   const [showForm, setShowForm] = useState(false);
 
-  const heroImages = [hero6, hero2, hero1, hero3];
+  const heroImages = [ hero6 , sands2 , hero1 , hero3];
+  const aboutImage = "https://floridaindependent.com/wp-content/uploads/2020/11/Sand-Suppliers.jpg";
 
   const whyChooseUsItems = [
     {
@@ -51,27 +56,28 @@ const Home = () => {
   ];
 
   const featuredProducts = [
-    {
-      title: "River Sand",
-      image: riversand,
-      description: "Naturally sourced sand ideal for plastering and brickwork...",
-    },
-    {
-      title: "M-Sand",
-      image: msand,
-      description: "Crushed stone sand specially manufactured for load-bearing concrete mixes...",
-    },
-    {
-      title: "P-Sand",
-      image: psand,
-      description: "Finely graded plastering sand with ultra-smooth particles...",
-    },
-    {
-      title: "Rockdust",
-      image: rockdust,
-      description: "High-grade stone powder used as a compactable base material...",
-    },
-  ];
+  {
+    title: "River Sand",
+    image: riversand,
+    description: "Naturally sourced sand ideal for plastering and brickwork. Offers excellent binding strength, fine texture, and minimal impurities. Preferred for residential and commercial plaster finish jobs.",
+  },
+  {
+    title: "M-Sand",
+    image: msand,
+    description: "Crushed stone sand specially manufactured for load-bearing concrete mixes. Free from silt and clay, M-Sand provides high compressive strength and uniform particle size, making it ideal for RCC and block works.",
+  },
+  {
+    title: "P-Sand",
+    image: psand,
+    description: "Finely graded plastering sand with ultra-smooth particles for flawless wall finishing and tile laying. P-Sand ensures better cohesion, crack resistance, and superior workability for internal and external rendering.",
+  },
+  {
+    title: "Rockdust",
+    image: rockdust,
+    description: "High-grade stone powder used as a compactable base material for paving, concrete sub-layers, and soil conditioning. Rockdust offers excellent compaction, improved load distribution, and is a sustainable alternative to traditional fillers.",
+  },
+];
+
 
   const CheckIcon = () => (
     <svg className="w-5 h-5 text-primary mt-1 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -85,27 +91,21 @@ const Home = () => {
         <title>Kerala's Trusted Sand Supplier | Govt Approved</title>
         <meta name="description" content="Premium quality, government-approved sand delivered across Kerala. Includes GST bill & geology pass." />
         <meta name="keywords" content="Kerala sand supplier, government approved sand, construction sand, plastering sand, GST geology pass, Kallambalam sand" />
-        <link rel="preload" as="image" href={hero6} type="image/webp" />
       </Helmet>
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="relative h-[80vh] md:h-screen w-full overflow-hidden">
         <Swiper modules={[Autoplay, EffectFade]} effect="fade" autoplay={{ delay: 5000 }} loop className="absolute inset-0 w-full h-full z-0">
           {heroImages.map((img, idx) => (
             <SwiperSlide key={idx}>
-              <img
-                src={img}
-                alt={`Hero Slide showing construction sand delivery image ${idx + 1}`}
-                className="w-full h-full object-cover"
-                loading={idx === 0 ? "eager" : "lazy"}
-              />
+              <img src={img} alt={`slide-${idx}`} className="w-full h-full object-cover" />
             </SwiperSlide>
           ))}
         </Swiper>
 
         <div className="absolute inset-0 z-10 bg-black/40 flex items-center justify-center">
           <div className="text-center px-6">
-            <motion.h1
+            <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -117,31 +117,168 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Other sections remain the same, just update image tags with better alt and loading="lazy" */}
+      {/* About */}
+      <motion.section
+        ref={aboutRef}
+        className=" pt-24 pb-20 bg-white"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <div className="max-w-7xl mx-auto px-8"> {/* Increased padding */}
+          <div className="flex flex-col-reverse md:flex-row gap-12 items-center">
+            <div className="md:w-1/2">
+              <img src={sands6} alt="About our company" className="rounded-xl shadow-xl w-full h-auto object-cover" />
+            </div>
+            <div className="md:w-1/2">
+              <h2 className="text-3xl font-display font-bold text-primary mb-6">About Our Company</h2>
+              <p className="text-lg text-dark mb-4">Located at Vadakottukavu, NH Road Kallambalam, we supply premium quality sand for construction and plastering across five districts in Kerala.</p>
+              <p className="text-lg text-dark mb-6">Our government-approved sand comes with complete documentation including geology pass and GST bill for your peace of mind.</p>
+              <div className="space-y-3">
+                <div className="flex items-start"><CheckIcon /><span>Serving: Trivandrum, Kollam, Alappuzha, Pathanamthitta, Kottayam</span></div>
+                <div className="flex items-start"><CheckIcon /><span>Geology pass and GST bill provided</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.section>
 
-      {/* Example: About section image */}
-      <img
-        src={sands6}
-        alt="Team of certified sand suppliers in Kerala"
-        className="rounded-xl shadow-xl w-full h-auto object-cover"
-        loading="lazy"
-      />
+      <ServicesSection/>
 
-      {/* Example: Featured Products */}
+     {/* Featured Products – Refined */}
+<motion.section
+  className="py-20 bg-light"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true }}
+>
+  <div className="max-w-7xl mx-auto px-6">
+    {/* Title Row */}
+    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+      <div>
+        <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-2">
+          Premium Construction Sands
+        </h2>
+        <div className="w-20 h-1 bg-primary mb-3" />
+        <p className="text-gray-600 max-w-2xl">
+          Select from a curated range of high-quality sands — precisely graded and processed to meet the most demanding construction, plastering, and filling needs.
+        </p>
+      </div>
+      <a
+        href="/products"
+        className="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-md font-medium transition shadow-md whitespace-nowrap"
+      >
+        Explore All Products
+      </a>
+    </div>
+
+    {/* Product Cards Grid */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       {featuredProducts.map((product, index) => (
-        <img
+        <motion.div
           key={index}
-          src={product.image}
-          alt={`${product.title} - ${product.description.slice(0, 60)}...`}
-          className="w-full h-full object-cover"
-          loading="lazy"
-        />
-      ))}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-xl border border-gray-100 hover:border-primary hover:shadow-xl transition-all duration-300 overflow-hidden group"
+        >
+          {/* Image */}
+          <div className="relative h-52 md:h-56 lg:h-64 overflow-hidden">
+            <img
+              src={product.image}
+              alt={product.title}
+              className="w-full h-full object-cover transform group-hover:scale-105 transition duration-300"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent p-4 flex items-end">
+              <h3 className="text-lg font-semibold text-white drop-shadow-md">
+                {product.title}
+              </h3>
+            </div>
+          </div>
 
-      {/* Your other content remains unchanged */}
-      <ServicesSection />
+          {/* Description */}
+          <div className="p-5">
+            <p className="text-gray-700 text-sm leading-relaxed">
+              {product.description}
+            </p>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</motion.section>
+
+
+
+      {/* Why Choose Us */}
+      <motion.section
+        className="bg-dark py-20 font-sans"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <div className="max-w-6xl mx-auto px-8"> {/* Increased padding */}
+          <div className="flex flex-col md:flex-row items-center gap-10">
+            <div className="md:w-5/12 text-center">
+              <h2 className="text-3xl md:text-4xl font-display text-light mb-6">Why <span className="text-primary">Choose Our</span> Sand</h2>
+              <p className="text-neutral mb-8">Trusted by construction firms and contractors across Kerala for premium quality and reliable service.</p>
+              <>
+                {showForm && <ContactForm />}
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  onClick={() => setShowForm(true)}
+                  className="bg-primary hover:bg-primary-dark text-light px-8 py-3 rounded-lg font-medium transition-colors shadow-md hover:shadow-lg"
+                >
+                  Request Quote
+                </motion.button>
+              </>
+            </div>
+
+            <div className="md:w-7/12 space-y-6">
+              {whyChooseUsItems.map((item, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.03, y: -4 }}
+                  className="flex items-start p-5 bg-dark hover:bg-primary rounded-xl transition-colors border border-primary hover:border-accent/30 shadow-md"
+                >
+                  <div className="bg-primary/10 p-2 rounded-lg mr-5">
+                    <div className="text-accent">{item.icon}</div>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-light mb-1">{item.title}</h3>
+                    <p className="text-neutral">{item.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
       <BlogPost />
       <Reviews />
+
+      {/* Final CTA */}
+      <motion.section
+        className="py-20 bg-primary text-light"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <div className="max-w-6xl mx-auto px-8 text-center"> {/* Increased padding */}
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Ready to Order Quality Sand?</h2>
+          <p className="text-xl mb-10 max-w-3xl mx-auto">Contact us today for government-approved sand with complete documentation</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="tel:+917837888666" className="bg-accent hover:bg-accent/90 text-primary px-10 py-4 rounded-md font-heading font-medium text-lg">Call: +91 7837 888 666</a>
+            <a href="https://www.google.com/maps/place/Vadakottukavu,+Kallambalam,+Kerala" target="_blank" rel="noopener noreferrer" className="border-2 border-light text-light hover:bg-light/10 px-10 py-4 rounded-md font-heading font-medium text-lg">Visit: Vadakottukavu, NH Road Kallambalam</a>
+          </div>
+        </div>
+      </motion.section>
     </div>
   );
 };
