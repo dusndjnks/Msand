@@ -36,7 +36,7 @@ const Footer = () => {
                 rel="noopener noreferrer" 
                 className="hover:text-white"
               >
-                JWPQ+R9C, Vembayam / Kilimanoor, Vembayam
+                JWPQ+R9C, Vembayam
               </a>
             </p>
             <p className='flex flex-col'>

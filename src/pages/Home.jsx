@@ -275,7 +275,7 @@ const Home = () => {
           <p className="text-xl mb-10 max-w-3xl mx-auto">Contact us today for government-approved sand with complete documentation</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:+917837888666" className="bg-accent hover:bg-accent/90 text-primary px-10 py-4 rounded-md font-heading font-medium text-lg">Call: +91 7837 888 666</a>
-            <a href="https://www.google.com/maps/place/Vadakottukavu,+Kallambalam,+Kerala" target="_blank" rel="noopener noreferrer" className="border-2 border-light text-light hover:bg-light/10 px-10 py-4 rounded-md font-heading font-medium text-lg">Visit: Vadakottukavu, NH Road Kallambalam</a>
+            <a href="https://maps.app.goo.gl/SQR5ssyvra1TBtmu5?g_st=aw" target="_blank" rel="noopener noreferrer" className="border-2 border-light text-light hover:bg-light/10 px-10 py-4 rounded-md font-heading font-medium text-lg">Visit: Vadakottukavu, NH Road Kallambalam</a>
           </div>
         </div>
       </motion.section>

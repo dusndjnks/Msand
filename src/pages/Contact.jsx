@@ -20,7 +20,6 @@ const Contact = () => {
     'Pathanamthitta',
     'Alappuzha',
     'Kottayam',
-    'Idukki',
     'Other'
   ];
 
@@ -130,7 +129,7 @@ const Contact = () => {
           {[{
             title: 'Head Office',
             icon: <MapPin size={20} />,
-            location: 'Kilimanoor',
+            location: 'Venmpayam',
             phone: '+91 78378 88666',
             email: 'info@sandking.com',
             locationLink: 'https://maps.app.goo.gl/WB5pZHLyvd63xr1T8',
@@ -139,10 +138,10 @@ const Contact = () => {
           }, {
             title: 'Kollam Depot',
             icon: <Truck size={20} />,
-            location: 'Vembayam',
+            location: 'Kallambalam',
             phone: '+91 94477 45440',
             email: 'kollam@sandking.com',
-            locationLink: 'https://www.google.com/maps/place/Vembayam',
+            locationLink: 'https://maps.app.goo.gl/SQR5ssyvra1TBtmu5?g_st=aw',
             emailLink: 'mailto:kollam@sandking.com',
             phoneLink: 'tel:+919447745440'
           }].map((branch, i) => (
