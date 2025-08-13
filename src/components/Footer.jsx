@@ -1,5 +1,5 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Facebook, Instagram, Mail } from 'lucide-react'; // social icons
 
 const Footer = () => {
   return (
@@ -8,9 +8,35 @@ const Footer = () => {
         {/* Company Info */}
         <div>
           <h3 className="text-xl font-bold mb-3">Goldensands</h3>
-          <p className="text-gray-400">
+          <p className="text-gray-400 mb-4">
             Premium sand supplier since 2005, delivering high-quality sand for construction and landscaping across regions with reliability and trust.
           </p>
+
+          {/* Social Icons */}
+          <div className="flex space-x-4">
+            <a 
+              href="https://www.instagram.com/goldensands_bysigma/?utm_source=ig_web_button_share_sheet" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-gray-400 hover:text-white"
+            >
+              <Instagram size={20} />
+            </a>
+            <a 
+              href="https://www.facebook.com/share/1CeQJELWy9/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-gray-400 hover:text-white"
+            >
+              <Facebook size={20} />
+            </a>
+            <a 
+              href="mailto:info@goldensandsbysigma@gmail.com" 
+              className="text-gray-400 hover:text-white"
+            >
+              <Mail size={20} />
+            </a>
+          </div>
         </div>
 
         {/* Quick Links */}
@@ -42,10 +68,10 @@ const Footer = () => {
             <p className='flex flex-col'>
               <a href="tel:7837888666" className="hover:text-white">Phone: 7837 888 666</a>
               <a href="tel:9447745440" className="hover:text-white">Phone: 9447 745 440</a>
-              <a href="tel:7307888666" className="hover:text-white">Phone: 9447 745 440</a>
+              <a href="tel:7307888666" className="hover:text-white">Phone: 7307 888 666</a>
             </p>
             <p>
-              <a href="info@sigmasands.in" className="hover:text-white">info@goldensands.com</a>
+              <a href="mailto:goldensandsbysigma@gmail.com" className="hover:text-white">goldensandsbysigma@gmail.com</a>
             </p>
           </address>
         </div>
