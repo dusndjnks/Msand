@@ -45,7 +45,7 @@ const Footer = () => {
               <a href="tel:7307888666" className="hover:text-white">Phone: 9447 745 440</a>
             </p>
             <p>
-              <a href="mailto:info@goldensands.com" className="hover:text-white">info@goldensands.com</a>
+              <a href="info@sigmasands.in" className="hover:text-white">info@goldensands.com</a>
             </p>
           </address>
         </div>

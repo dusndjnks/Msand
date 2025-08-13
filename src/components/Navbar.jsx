@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
-import logo from '../assets/logo1.webp';
+import logo from '../assets/sigmasands.webp';
 
 const NAV_LINKS = [
   { name: "Home", to: "/" },
+  { name: "Products", to: "/products" },
   { name: "About", to: "/about" },
   { name: "Blogs", to: "/blog" },
-  { name: "Products", to: "/products" },
 ];
 
 const Navbar = () => {

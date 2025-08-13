@@ -131,18 +131,18 @@ const Contact = () => {
             icon: <MapPin size={20} />,
             location: 'Venmpayam',
             phone: '+91 78378 88666',
-            email: 'info@sandking.com',
+            email: 'info@sigmasands.in',
             locationLink: 'https://maps.app.goo.gl/WB5pZHLyvd63xr1T8',
-            emailLink: 'mailto:info@sandking.com',
+            emailLink: 'mailto:info@sigmasands.in',
             phoneLink: 'tel:+917837888666'
           }, {
             title: 'Kollam Depot',
             icon: <Truck size={20} />,
             location: 'Kallambalam',
             phone: '+91 94477 45440',
-            email: 'kollam@sandking.com',
+            email: 'info@sigmasands.in',
             locationLink: 'https://maps.app.goo.gl/SQR5ssyvra1TBtmu5?g_st=aw',
-            emailLink: 'mailto:kollam@sandking.com',
+            emailLink: 'mailto:info@sigmasands.in',
             phoneLink: 'tel:+919447745440'
           }].map((branch, i) => (
             <motion.div

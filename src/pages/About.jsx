@@ -140,7 +140,7 @@ const AboutUs = () => {
       >
         <div className="text-center">
           <h3 className="text-xl font-semibold text-gray-800 mb-2">
-            A Division of <span className="text-[#742731]">Sigma Rocks International</span>
+            Parented by <span className="text-[#742731]">Sigma Rocks International</span>
           </h3>
           <div className="w-16 h-1 bg-[#742731] mx-auto mb-4"></div>
           <p className="text-gray-600 mb-3">
