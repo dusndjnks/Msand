@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
 import { motion } from 'framer-motion';
-import 'swiper/css';
-import 'swiper/css/pagination';
 
 import riversand from "../assets/riversand.webp";
 import msand from "../assets/m-sand.webp";
@@ -13,10 +9,10 @@ import bluemetal6 from "../assets/6mmbluemetal.webp";
 import rockdust from "../assets/rockdust.webp";
 import rockrubble from "../assets/product3.webp";
 
-import row3 from "../assets/row3.webp"
-import row2 from "../assets/row2.webp"
-import row1 from "../assets/row1.webp"
-import sands1 from "../assets/goldensands (1).webp"
+import row3 from "../assets/row3.webp";
+import row2 from "../assets/row2.webp";
+import row1 from "../assets/row1.webp";
+import sands1 from "../assets/goldensands (1).webp";
 
 const products = [
   {
@@ -63,10 +59,9 @@ const products = [
   }
 ];
 
-const qualityImages = [riversand, msand, bluemetal20];
-
 const Product = () => {
   const [showForm, setShowForm] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState('');
   const [formData, setFormData] = useState({
     name: '',
@@ -93,41 +88,63 @@ const Product = () => {
     setShowForm(true);
   };
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
   e.preventDefault();
   
-  // Enhanced validation
-  if (!formData.name.trim() || !formData.phone.trim()) {
-    alert("Please fill in all required fields (Name and Phone)");
+  if (!formData.name.trim()) {
+    alert("Please enter your name");
+    return;
+  }
+  
+  if (!formData.phone.trim() || !/^[0-9]{10,15}$/.test(formData.phone.trim())) {
+    alert("Please enter a valid 10-digit phone number");
     return;
   }
 
+  setIsSubmitting(true);
+  
   try {
-    // Show loading state (you could add a state variable for this)
-    // setSubmitting(true);
+    // Create form data object with timestamp
+    const payload = {
+      ...formData,
+      timestamp: new Date().toISOString()
+    };
+
+    // Convert to URL-encoded format
+    const formDataEncoded = new URLSearchParams();
+    for (const key in payload) {
+      formDataEncoded.append(key, payload[key]);
+    }
+
+    // Use a proxy URL if needed (see step 3)
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbwo7alFZPoohmj2LVge0gGuXzQ3vp5fCufgIU29JtwTLSaIFvmQILSTgiPsRsaUQgyOng/exec";
     
-    // Using cors mode to actually get the response
-    const response = await fetch("https://script.google.com/macros/s/AKfycbxx6HXwsXLZc3WEySLVXyfkTuPKAO9JXXdM0cMAliKBc9UxblUGJ9n13xolxOr9MqPe/exec", {
+    const response = await fetch(scriptUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: new URLSearchParams(formData).toString()
+      body: formDataEncoded
     });
 
-    // If using CORS mode, you can check response
     if (!response.ok) {
-      throw new Error(`Server responded with ${response.status}`);
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    const result = await response.json();
+    const result = await response.text(); // First get as text
+    console.log("Raw response:", result);
     
-    if (result.result !== "success") {
-      throw new Error(result.message || "Form submission failed");
+    try {
+      const data = JSON.parse(result);
+      if (data.result !== "success") {
+        throw new Error(data.message || "Form submission failed");
+      }
+    } catch (e) {
+      // If not JSON, assume success if we got this far
+      console.log("Response wasn't JSON, but request succeeded");
     }
 
     alert("Thank you for your enquiry! We will contact you soon.");
-    
     setFormData({
       name: '',
       phone: '',
@@ -139,12 +156,11 @@ const handleSubmit = async (e) => {
     
   } catch (error) {
     console.error("Submission error:", error);
-    alert(`There was an error: ${error.message}. Please try again or contact us directly at ${contactPhone}`);
+    alert(`There was an error: ${error.message}. Please try again or contact us directly at +91 7837888666`);
   } finally {
-    // setSubmitting(false);
+    setIsSubmitting(false);
   }
 };
-
 
 
   return (
@@ -160,7 +176,7 @@ const handleSubmit = async (e) => {
         </div>
       </section>
 
-      {/* Products Grid - Redesigned to match rock rubble section */}
+      {/* Products Grid */}
       <section className="py-16 px-6 max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-[#742731] mb-3">Our Premium Products</h2>
@@ -170,55 +186,57 @@ const handleSubmit = async (e) => {
           </p>
         </div>
 
-<div className="space-y-12">
-  {products.map((product, index) => (
-    <motion.div
-      key={index}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
-      viewport={{ once: true }}
-      className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row"
-    >
-      {/* Left Side - Image */}
-      <div className="md:w-1/2 h-80 md:h-[400px] overflow-hidden">
-        <img
-          src={product.image}
-          alt={product.title}
-          className="w-full h-full object-cover scale-110"
-          loading="lazy"
-        />
-      </div>
+        <div className="space-y-12">
+          {products.map((product, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row"
+            >
+              {/* Left Side - Image */}
+              <div className="md:w-1/2 h-80 md:h-[400px] overflow-hidden">
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="w-full h-full object-cover scale-110"
+                  loading="lazy"
+                  width={600}
+                  height={400}
+                />
+              </div>
 
+              {/* Right Side - Text */}
+              <div className="md:w-1/2 p-8 flex flex-col justify-center">
+                <h2 className="text-3xl md:text-4xl font-bold text-[#742731]">
+                  {product.title}
+                </h2>
+                <p className="text-gray-700 mb-6">
+                  {product.description}
+                </p>
 
-      {/* Right Side - Text */}
-      <div className="md:w-1/2 p-8 flex flex-col justify-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-[#742731] ">
-          {product.title}
-        </h2>
-        <p className="text-gray-700 mb-6">
-          {product.description}
-        </p>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">
+                  Common Uses
+                </h3>
+                <ul className="list-disc list-inside text-gray-600 mb-6">
+                  {product.uses.map((use, i) => (
+                    <li key={i}>{use}</li>
+                  ))}
+                </ul>
 
-        <h3 className="text-xl font-semibold text-gray-800 mb-3">
-          Common Uses
-        </h3>
-        <ul className="list-disc list-inside text-gray-600 mb-6">
-          {product.uses.map((use, i) => (
-            <li key={i}>{use}</li>
+                <button
+                  onClick={() => handleProductClick(product.title)}
+                  className="w-full md:w-auto bg-[#742731] hover:bg-[#5a1e26] text-white py-3 px-6 rounded-md transition-colors"
+                  aria-label={`Enquire about ${product.title}`}
+                >
+                  Enquire Now
+                </button>
+              </div>
+            </motion.div>
           ))}
-        </ul>
-
-        <button
-          onClick={() => handleProductClick(product.title)}
-          className="w-full md:w-auto bg-[#742731] hover:bg-[#5a1e26] text-white py-3 px-6 rounded-md transition-colors"
-        >
-          Enquire Now
-        </button>
-      </div>
-    </motion.div>
-  ))}
-</div>
+        </div>
       </section>
 
       {/* Enquiry Form Modal */}
@@ -228,13 +246,17 @@ const handleSubmit = async (e) => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="bg-white rounded-lg shadow-xl max-w-md w-full"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
           >
             <div className="p-6">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-bold text-[#742731]">Product Enquiry</h3>
+                <h3 id="modal-title" className="text-xl font-bold text-[#742731]">Product Enquiry</h3>
                 <button 
                   onClick={() => setShowForm(false)}
                   className="text-gray-500 hover:text-gray-700"
+                  aria-label="Close modal"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -254,6 +276,7 @@ const handleSubmit = async (e) => {
                       onChange={handleInputChange}
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#742731]"
+                      aria-required="true"
                     />
                   </div>
 
@@ -267,6 +290,8 @@ const handleSubmit = async (e) => {
                       onChange={handleInputChange}
                       required
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#742731]"
+                      aria-required="true"
+                      pattern="[0-9]{10,15}"
                     />
                   </div>
 
@@ -309,9 +334,12 @@ const handleSubmit = async (e) => {
                   <div>
                     <button
                       type="submit"
-                      className="w-full bg-[#742731] hover:bg-[#5a1e26] text-white py-2 px-4 rounded-md transition-colors"
+                      disabled={isSubmitting}
+                      className={`w-full bg-[#742731] hover:bg-[#5a1e26] text-white py-2 px-4 rounded-md transition-colors ${
+                        isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                      }`}
                     >
-                      Submit Enquiry
+                      {isSubmitting ? 'Submitting...' : 'Submit Enquiry'}
                     </button>
                   </div>
                 </div>
@@ -343,6 +371,8 @@ const handleSubmit = async (e) => {
                 alt={item.title}
                 className="w-full h-full object-cover"
                 loading="lazy"
+                width={400}
+                height={280}
               />
               <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center text-white text-center">
                 <div className="text-xl font-bold">{item.value}</div>
@@ -350,9 +380,8 @@ const handleSubmit = async (e) => {
               </div>
             </div>
           ))}
-        </div> 
-        <br />
-      </section>  
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-16 px-4 bg-[#742731] text-white text-center">
@@ -365,6 +394,7 @@ const handleSubmit = async (e) => {
             <a
               href="tel:+917837888666"
               className="bg-white text-[#742731] px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition"
+              aria-label="Call us at +91 7837888666"
             >
               Call Now
             </a>
@@ -373,6 +403,7 @@ const handleSubmit = async (e) => {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 border-2 border-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-[#742731] transition"
+              aria-label="Contact us on WhatsApp"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
