@@ -87,11 +87,6 @@ const Home = () => {
 
   return (
     <div className="font-sans bg-beige text-dark">
-      <Helmet>
-        <title>Kerala's Trusted Sand Supplier | Govt Approved</title>
-        <meta name="description" content="Premium quality, government-approved sand delivered across Kerala. Includes GST bill & geology pass." />
-        <meta name="keywords" content="Kerala sand supplier, government approved sand, construction sand, plastering sand, GST geology pass, Kallambalam sand" />
-      </Helmet>
 
       {/* Hero */}
       <section className="relative h-[90vh] md:h-screen w-full overflow-hidden">
